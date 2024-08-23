@@ -1,26 +1,24 @@
-from pydov.search.grondwaterfilter import GrondwaterFilterSearch
-gwfilter = GrondwaterFilterSearch()
-from owslib.fes2 import PropertyIsEqualTo
-
-query = PropertyIsEqualTo(
-            propertyname='pkey_filter',
-            literal='https://www.dov.vlaanderen.be/data/filter/1979-006377')
-
-
-df = gwfilter.search(query=query)
-df['year'] = df['datum'].apply(lambda x: str(x.year))
 from matplotlib.dates import MonthLocator, YearLocator, DateFormatter
 from matplotlib.ticker import MaxNLocator, MultipleLocator
-import streamlit as st
 import matplotlib.pyplot as plt
+import pandas as pd
+import plotly.graph_objects as go
 
-# Get height of ground surface
-ground_surface = df["mv_mtaw"][0]
+# Create a Plotly figure
+fig = go.Figure()
 
-# create a plot with 2 subplots
-fig = plt.figure(figsize=(12, 6))
+# Plot entire time series
+fig.add_trace(
+    go.Scatter(x=df.index, y=df['peil_mtaw'], mode='lines', name='peil_mtaw')
+)
 
-# Plot entire time series in the upper plot
-df['peil_mtaw'].plot()
+# Update layout
+fig.update_layout(
+    title='Time Series Plot of peil_mtaw',
+    xaxis_title='Date',
+    yaxis_title='peil_mtaw',
+    height=600,
+    width=800
+)
 
 st.pyplot(fig)
