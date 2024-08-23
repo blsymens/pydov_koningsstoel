@@ -3,6 +3,16 @@ from matplotlib.ticker import MaxNLocator, MultipleLocator
 import matplotlib.pyplot as plt
 import pandas as pd
 import plotly.graph_objects as go
+from pydov.search.grondwaterfilter import GrondwaterFilterSearch
+from owslib.fes2 import PropertyIsEqualTo
+
+gwfilter = GrondwaterFilterSearch()
+query = PropertyIsEqualTo(
+            propertyname='pkey_filter',
+            literal='https://www.dov.vlaanderen.be/data/filter/1979-006377')
+
+df = gwfilter.search(query=query)
+df['year'] = df['datum'].apply(lambda x: str(x.year))
 
 # Create a Plotly figure
 fig = go.Figure()
