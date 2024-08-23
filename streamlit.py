@@ -32,4 +32,5 @@ fig.update_layout(
     width=800
 )
 
-st.pyplot(fig)
+# Display the figure in Streamlit
+st.plotly_chart(fig)
