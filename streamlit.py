@@ -11,6 +11,7 @@ df = gwfilter.search(query=query)
 df['year'] = df['datum'].apply(lambda x: str(x.year))
 from matplotlib.dates import MonthLocator, YearLocator, DateFormatter
 from matplotlib.ticker import MaxNLocator, MultipleLocator
+import matplotlib.pyplot as plt
 
 # Get height of ground surface
 ground_surface = df["mv_mtaw"][0]
