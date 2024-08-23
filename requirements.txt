@@ -2,3 +2,6 @@ pydov
 pandas
 seaborn
 matplotlib
+nbformat
+plotly
+streamlit
