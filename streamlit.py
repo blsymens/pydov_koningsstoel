@@ -5,6 +5,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from pydov.search.grondwaterfilter import GrondwaterFilterSearch
 from owslib.fes2 import PropertyIsEqualTo
+import streamlit as st
 
 gwfilter = GrondwaterFilterSearch()
 query = PropertyIsEqualTo(
