@@ -11,6 +11,7 @@ df = gwfilter.search(query=query)
 df['year'] = df['datum'].apply(lambda x: str(x.year))
 from matplotlib.dates import MonthLocator, YearLocator, DateFormatter
 from matplotlib.ticker import MaxNLocator, MultipleLocator
+import streamlit as st
 import matplotlib.pyplot as plt
 
 # Get height of ground surface
@@ -55,3 +56,4 @@ for ax in (ax1, ax2):
              fontsize=12, color='brown')
 
 fig.tight_layout(h_pad=5)
+st.pyplot(fig)
