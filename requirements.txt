@@ -3,5 +3,5 @@ pandas
 seaborn
 matplotlib
 nbformat
-plotly
-streamlit
+plotly==5.8.2
+streamlit==1.11.0 
