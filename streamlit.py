@@ -24,7 +24,7 @@ fig.add_trace(
     go.Scatter(x=df.index, y=df['peil_mtaw'], mode='lines', name='peil_mtaw')
 )
 
-maaiveld = df['mv_mtaw'].mean()
+maaiveld = df['mv_mtaw'].mean().round(1)
 
 # Add a horizontal line at a given value
 hline_value = maaiveld  # Replace with your desired value
