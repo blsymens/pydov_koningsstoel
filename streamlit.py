@@ -14,6 +14,7 @@ query = PropertyIsEqualTo(
 
 df = gwfilter.search(query=query)
 df['year'] = df['datum'].apply(lambda x: str(x.year))
+df.set_index('datum',inplace=True)
 
 # Create a Plotly figure
 fig = go.Figure()
@@ -22,6 +23,20 @@ fig = go.Figure()
 fig.add_trace(
     go.Scatter(x=df.index, y=df['peil_mtaw'], mode='lines', name='peil_mtaw')
 )
+
+maaiveld = df['mv_mtaw'].mean()
+
+# Add a horizontal line at a given value
+hline_value = maaiveld  # Replace with your desired value
+fig.add_hline(
+    y=hline_value,
+    line_width=2,
+    line_dash="dash",
+    line_color="black",
+    annotation_text=f"Maaiveld (mTAW) Line at {hline_value}",
+    annotation_position="top left"
+)
+
 
 # Update layout
 fig.update_layout(
