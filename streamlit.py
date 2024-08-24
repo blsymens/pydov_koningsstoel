@@ -31,22 +31,17 @@ hline_value = maaiveld  # Replace with your desired value
 fig.add_hline(
     y=hline_value,
     line_width=2,
-    line_dash="dash",
     line_color="black",
     annotation_text=f"Maaiveld (mTAW) Line at {hline_value}",
     annotation_position="top left"
 )
 
-
 # Update layout
 fig.update_layout(
     title='Time Series Plot of peil_mtaw',
     xaxis_title='Date',
-    yaxis_title='peil_mtaw',
-    height=600,
-    width=800
+    yaxis_title='peil_mtaw'
 )
 
-st.write(df)
 # Display the figure in Streamlit
 st.plotly_chart(fig, use_container_width=True)
